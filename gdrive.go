@@ -316,7 +316,7 @@ func main() {
 			},
 		},
 		&cli.Handler{
-			Pattern:     "[global] update [options] <fileId> <path>",
+			Pattern:     "[global] update [options] <fileId>",
 			Description: "Update file, this creates a new revision of the file",
 			Callback:    updateHandler,
 			FlagGroups: cli.FlagGroups{
@@ -359,6 +359,11 @@ func main() {
 						Patterns:     []string{"--chunksize"},
 						Description:  fmt.Sprintf("Set chunk size in bytes, default: %d", DefaultUploadChunkSize),
 						DefaultValue: DefaultUploadChunkSize,
+					},
+					cli.StringFlag{
+						Name:        "path",
+						Patterns:    []string{"--path"},
+						Description: "File's local path",
 					},
 				),
 			},
