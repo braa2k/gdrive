@@ -107,10 +107,10 @@ func (self *Drive) ListPermissions(args ListPermissionsArgs) error {
 	return nil
 }
 
-func (self *Drive) shareAnyoneReader(fileId string) error {
+func (self *Drive) shareDomainReader(fileId string) error {
 	permission := &drive.Permission{
 		Role: "reader",
-		Type: "anyone",
+		Type: "domain",
 	}
 
 	_, err := self.service.Permissions.Create(fileId, permission).SupportsTeamDrives(true).Do()

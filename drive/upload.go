@@ -63,12 +63,12 @@ func (self *Drive) Upload(args UploadArgs) error {
 	fmt.Fprintf(args.Out, "Uploaded %s at %s/s, total %s\n", f.Id, formatSize(rate, false), formatSize(f.Size, false))
 
 	if args.Share {
-		err = self.shareAnyoneReader(f.Id)
+		err = self.shareDomainReader(f.Id)
 		if err != nil {
 			return err
 		}
 
-		fmt.Fprintf(args.Out, "File is readable by anyone at %s\n", f.WebContentLink)
+		fmt.Fprintf(args.Out, "File is readable by domain at %s\n", f.WebContentLink)
 	}
 
 	if args.Delete {
