@@ -252,7 +252,7 @@ func (self *Drive) UploadStream(args UploadStreamArgs) error {
 
 	fmt.Fprintf(args.Out, "Uploaded %s at %s/s, total %s\n", f.Id, formatSize(rate, false), formatSize(f.Size, false))
 	if args.Share {
-		err = self.shareAnyoneReader(f.Id)
+		err = self.shareDomainReader(f.Id)
 		if err != nil {
 			return err
 		}
